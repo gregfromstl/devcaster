@@ -1,5 +1,5 @@
 {
-    "name": "devcaster-next",
+    "name": "@devcaster/next",
     "version": "1.0.0",
     "description": "Tools for easy Farcaster development in Next.js",
     "main": "index.ts",
@@ -11,6 +11,10 @@
         "farcaster"
     ],
     "author": "gregfromstl",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gregfromstl/devcaster"
+    },
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^20.11.16",
