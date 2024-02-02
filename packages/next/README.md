@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
 }
 ```
 
-Finally, create a single `frames` route inside your `app` directory, and add a `route.ts` file to it. Add the post handler to the route:
+Finally, create a single `frames` folder inside your `app` directory, and add a `route.ts` file to it. Add the post handler to the route:
 
 ```
 import { NextRequest } from "next/server";
