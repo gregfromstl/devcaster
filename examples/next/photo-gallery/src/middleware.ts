@@ -10,28 +10,31 @@ async function framesMiddleware(request: NextRequest) {
         method === "POST" &&
         !parseInt(newUrl.searchParams.get("request_complete") ?? "0")
     ) {
-        const body = await request.json();
-        console.log("body", body);
+        return NextResponse.redirect(process.env.BASE_URL as string, {
+            status: 302,
+        });
+        // const body = await request.json();
+        // console.log("body", body);
 
-        const redirects = newUrl.searchParams.get("redirects");
-        if (redirects) {
-            console.log("redirects", redirects);
-            const redirectsObj = JSON.parse(decodeURIComponent(redirects));
-            if (redirectsObj[`${body.untrustedData.buttonIndex}`]) {
-                const redirectUrl = new URL(
-                    redirectsObj[`${body.untrustedData.buttonIndex}`]
-                );
-                redirectUrl.searchParams.set("request_complete", "1");
-                console.log("redirecting to", redirectUrl.toString());
-                return NextResponse.redirect(redirectUrl.toString(), {
-                    status: 302,
-                });
-            }
-        }
-        newUrl.searchParams.set(
-            "action",
-            encodeURIComponent(JSON.stringify(body))
-        );
+        // const redirects = newUrl.searchParams.get("redirects");
+        // if (redirects) {
+        //     console.log("redirects", redirects);
+        //     const redirectsObj = JSON.parse(decodeURIComponent(redirects));
+        //     if (redirectsObj[`${body.untrustedData.buttonIndex}`]) {
+        //         const redirectUrl = new URL(
+        //             redirectsObj[`${body.untrustedData.buttonIndex}`]
+        //         );
+        //         redirectUrl.searchParams.set("request_complete", "1");
+        //         console.log("redirecting to", redirectUrl.toString());
+        //         return NextResponse.redirect(process.env.BASE_URL + "/api", {
+        //             status: 302,
+        //         });
+        //     }
+        // }
+        // newUrl.searchParams.set(
+        //     "action",
+        //     encodeURIComponent(JSON.stringify(body))
+        // );
     }
 
     newUrl.searchParams.set(
