@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 // import { framesMiddleware } from "@devcaster/next/frames";
 
 async function framesMiddleware(request: NextRequest) {
+    console.log(request.url);
     const method = request.method;
     const newUrl = new URL(request.url);
 
@@ -11,6 +12,7 @@ async function framesMiddleware(request: NextRequest) {
     ) {
         const body = await request.json();
         console.log("body", body);
+
         const redirects = newUrl.searchParams.get("redirects");
         if (redirects) {
             console.log("redirects", redirects);
