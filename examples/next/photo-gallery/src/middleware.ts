@@ -21,9 +21,11 @@ async function framesMiddleware(request: NextRequest) {
                 const redirectUrl = new URL(
                     redirectsObj[`${body.untrustedData.buttonIndex}`]
                 );
-                console.log("redirecting to", redirectUrl.toString());
                 redirectUrl.searchParams.set("request_complete", "1");
-                return NextResponse.redirect(redirectUrl, { status: 302 });
+                console.log("redirecting to", redirectUrl.toString());
+                return NextResponse.redirect(redirectUrl.toString(), {
+                    status: 302,
+                });
             }
         }
         newUrl.searchParams.set(
