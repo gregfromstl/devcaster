@@ -18,14 +18,12 @@ async function framesMiddleware(request: NextRequest) {
             console.log("redirects", redirects);
             const redirectsObj = JSON.parse(decodeURIComponent(redirects));
             if (redirectsObj[`${body.untrustedData.buttonIndex}`]) {
-                console.log(
-                    "redirecting to",
+                const redirectUrl = new URL(
                     redirectsObj[`${body.untrustedData.buttonIndex}`]
                 );
-                return NextResponse.redirect(
-                    redirectsObj[`${body.untrustedData.buttonIndex}`],
-                    { status: 302 }
-                );
+                console.log("redirecting to", redirectUrl.toString());
+                redirectUrl.searchParams.set("request_complete", "1");
+                return NextResponse.redirect(redirectUrl, { status: 302 });
             }
         }
         newUrl.searchParams.set(
