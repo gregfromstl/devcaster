@@ -1,6 +1,6 @@
 {
     "name": "@devcaster/next",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Tools for easy Farcaster development in Next.js",
     "main": "index.ts",
     "scripts": {

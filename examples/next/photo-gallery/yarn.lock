@@ -19,6 +19,14 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@devcaster/next@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@devcaster/next/-/next-1.0.3.tgz#d6340c4eef2713376c5edb035d31fce9ea724a6e"
+  integrity sha512-AvUQaqDkkTj2wTAY/5FckrQ9YXou9akG8aL9oe9Y3zl2mPFAAbxyYe6aSm6H2oBZcWNJHkf92oSy7zc/470NVg==
+  dependencies:
+    next "14.1.0"
+    react "^18.2.0"
+
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
@@ -2048,7 +2056,7 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react@^18:
+react@^18, react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

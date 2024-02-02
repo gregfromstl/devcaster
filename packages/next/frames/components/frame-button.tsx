@@ -1,7 +1,7 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import { FrameConfig } from "@frames/frame-config";
-import { FrameAction } from "@frames/types";
+import { FrameConfig } from "../frame-config";
+import { FrameAction } from "../types";
 
 type FrameButtonProps<S> = {
     children: string | number;
