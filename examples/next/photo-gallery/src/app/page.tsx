@@ -26,24 +26,28 @@ export default function Home({
                 <FrameButton
                     onClick={(f: typeof frame) => {
                         f.state.index =
-                            (f.state.index + photos.length - 1) % photos.length;
+                            f.state.index > 0
+                                ? f.state.index - 1
+                                : photos.length - 1;
                     }}
                 >
                     ◀️
                 </FrameButton>
                 <FrameButton
-                    href={`${process.env.BASE_URL}?index=${frame.state.index}`}
+                    href={`${process.env.BASE_URL}?index=${
+                        frame.state.index % photos.length
+                    }`}
                 >
                     Visit
                 </FrameButton>
                 <FrameButton
                     onClick={(f: typeof frame) => {
-                        f.state.index += 1 % photos.length;
+                        f.state.index += 1;
                     }}
                 >
                     ▶️
                 </FrameButton>
-                <FrameImage src={photos[frame.state.index]} />
+                <FrameImage src={photos[frame.state.index % photos.length]} />
             </Frame>
 
             <div className="w-screen h-screen relative bg-gray-100">
