@@ -45,7 +45,7 @@ export async function HydratedFrameButton<S>({
         const redirectUrl =
             (result ?? frame.url) +
             `?state=${encodeURIComponent(JSON.stringify(frame.state))}`;
-        console.log(redirectUrl);
+
         const bytes = new TextEncoder().encode(redirectUrl).length;
         if (bytes > 256)
             throw new Error(

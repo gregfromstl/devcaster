@@ -7,6 +7,7 @@ export async function framesMiddleware(request: NextRequest) {
     const url = new URL(request.url);
     const rawUrl = (process.env.BASE_URL ?? url.origin) + url.pathname;
     requestHeaders.set("x-url", rawUrl);
+    requestHeaders.set("x-origin", process.env.BASE_URL ?? url.origin);
 
     return NextResponse.next({
         request: {

@@ -5,6 +5,7 @@ import { FrameAction } from "./types";
 export class FrameConfig<S> {
     state: S;
     url: string;
+    origin: string;
     action?: FrameAction;
     redirects: Record<number, string>;
     initialized = false;
@@ -18,6 +19,7 @@ export class FrameConfig<S> {
             : undefined;
         const headersList = headers();
         this.url = headersList.get("x-url") || "";
+        this.origin = headersList.get("x-origin") || "";
 
         this.state = { ...initialState, ...currentState };
         this.redirects = {};

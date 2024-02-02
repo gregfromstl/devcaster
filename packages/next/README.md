@@ -28,6 +28,19 @@ export async function middleware(request: NextRequest) {
 }
 ```
 
+Finally, create a single `frames` route inside your `app` directory, and add a `route.ts` file to it. Add the post handler to the route:
+
+```
+import { NextRequest } from "next/server";
+import { framesPOST } from "@devcaster/next/frames";
+
+export async function POST(request: NextRequest) {
+    return await framesPOST(request);
+}
+```
+
+## Creating a Frame
+
 To add a frame to a page, create a new `FrameConfig` in any `page.ts` file. Pass the config your initial state and the page's unaltered `searchParams` object:
 
 ```
@@ -69,13 +82,13 @@ You can pass your `FrameButton` components an `onClick` function to update the f
 
 You can use your frame's state to dynamically generate the returned image.
 
-> Note: The image must be an absolute URL, so you may need to create a `BASE_URL` environment variable.
+> Note: For testing locally via tunneling, set a BASE_URL environment variable to your tunnel's url to override localhost.
 
 You can also create a redirect button by providing an `href` prop rather than `onClick`. You can dynamically generate this link using both your frame state and the returned action data:
 
 ```
 <FrameButton
-	href={`${process.env.BASE_URL}?index=${frame.state.index}&fid=${frame.action?.trustedData.message.data.fid}`}
+	href={`${frame.origin}?index=${frame.state.index}&fid=${frame.action?.trustedData.message.data.fid}`}
 >
 	Visit
 </FrameButton>
@@ -84,5 +97,7 @@ You can also create a redirect button by providing an `href` prop rather than `o
 > Note: The redirect URL must have the same base domain as your site, per the Frame standard.
 
 See more [examples](https://github.com/gregfromstl/devcaster/tree/main/examples/next)
+
+Contact [@gregfromstl](https://warpcast.com/gregfromstl) for any support.
 
 _More docs and examples coming soon..._

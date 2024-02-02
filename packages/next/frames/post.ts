@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function framesPOST(request: NextRequest) {
-    const { pathname, searchParams } = new URL(request.url);
+    const { searchParams } = new URL(request.url);
     const nextUrl = searchParams.get("url");
-    const newUrl = new URL(process.env.BASE_URL ?? nextUrl ?? pathname);
+    const newUrl = new URL(nextUrl ?? "/");
 
     const body = await request.json();
     const redirects = searchParams.get("redirects");
