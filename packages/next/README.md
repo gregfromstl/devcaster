@@ -19,7 +19,7 @@ Create a `middleware.ts` file at the same level as your app directory. [More on 
 
 Inside your `middleware.ts`, add the frames middleware function:
 
-```
+```TypeScript
 import type { NextRequest } from "next/server";
 import { framesMiddleware } from "@devcaster/next/frames";
 
@@ -30,7 +30,7 @@ export async function middleware(request: NextRequest) {
 
 Finally, create a single `frames` folder inside your `app` directory, and add a `route.ts` file to it. Add the post handler to the route:
 
-```
+```TypeScript
 import { NextRequest } from "next/server";
 import { framesPOST } from "@devcaster/next/frames";
 
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
 
 To add a frame to a page, create a new `FrameConfig` in any `page.ts` file. Pass the config your initial state and the page's unaltered `searchParams` object:
 
-```
+```TypeScript
 export default function Home({
     searchParams,
 }: {
@@ -58,7 +58,7 @@ In the above example, we have a simple frame state with a single `count` variabl
 
 To create the frame elements, add a `Frame` component to your JSX, passing in your `FrameConfig`. Within your `Frame`, you can add buttons and images that will appear in the frame in a supported client:
 
-```
+```JSX
 <Frame frame={frame}>
 	<FrameButton
 		onClick={(f: typeof frame) => {
@@ -86,7 +86,7 @@ You can use your frame's state to dynamically generate the returned image.
 
 To route to a new page after updating state, you can return a pathname from your `onClick` function:
 
-```
+```JSX
 <FrameButton
 	onClick={(f: typeof frame) => {
 		f.state.fid = f.action!.untrustedData.fid;
@@ -97,7 +97,7 @@ To route to a new page after updating state, you can return a pathname from your
 
 On the `/result` page, you can continue to use the same state as long as the state object is consistent:
 
-```
+```TypeScript
 const frame = new FrameConfig<{
 	fid: number;
 }>({ fid: -1 }, searchParams);
@@ -108,7 +108,7 @@ const pokemon = await getPokemon(frame.state.fid);
 
 You can also create a redirect button by providing an `href` prop rather than `onClick`. You can dynamically generate this link using both your frame state and the returned action data:
 
-```
+```JSX
 <FrameButton
 	href={`${frame.origin}?index=${frame.state.index}&fid=${frame.action?.trustedData.message.data.fid}`}
 >
