@@ -84,6 +84,28 @@ You can use your frame's state to dynamically generate the returned image.
 
 > Note: For testing locally via tunneling, set a BASE_URL environment variable to your tunnel's url to override localhost.
 
+To route to a new page after updating state, you can return a pathname from your `onClick` function:
+
+```
+<FrameButton
+	onClick={(f: typeof frame) => {
+		f.state.fid = f.action!.untrustedData.fid;
+		return "/result";
+	}}
+>
+```
+
+On the `/result` page, you can continue to use the same state as long as the state object is consistent:
+
+```
+const frame = new FrameConfig<{
+	fid: number;
+}>({ fid: -1 }, searchParams);
+if (frame.state.fid === -1) throw new Error("Failed to get FID");
+
+const pokemon = await getPokemon(frame.state.fid);
+```
+
 You can also create a redirect button by providing an `href` prop rather than `onClick`. You can dynamically generate this link using both your frame state and the returned action data:
 
 ```
