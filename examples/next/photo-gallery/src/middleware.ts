@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 // import { framesMiddleware } from "@devcaster/next/frames";
+export const dynamic = "force-dynamic";
 
 async function framesMiddleware(request: NextRequest) {
     console.log(request.url);
