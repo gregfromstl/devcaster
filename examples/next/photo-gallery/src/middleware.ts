@@ -23,7 +23,7 @@ async function framesMiddleware(request: NextRequest) {
                 );
                 redirectUrl.searchParams.set("request_complete", "1");
                 console.log("redirecting to", redirectUrl.toString());
-                return NextResponse.redirect(process.env.BASE_URL + "/api", {
+                return NextResponse.redirect(redirectUrl.toString(), {
                     status: 302,
                 });
             }
