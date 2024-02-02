@@ -11,7 +11,9 @@ export default function Home({
 }: {
     searchParams: Record<string, string>;
 }) {
+    console.log("search", searchParams);
     const frame = new FrameConfig({ index: 0 }, searchParams);
+    console.log("FRAME", frame);
     const photos = [
         "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
         "https://images.unsplash.com/photo-1454496522488-7a8e488e8606",

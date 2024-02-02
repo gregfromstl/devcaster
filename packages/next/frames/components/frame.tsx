@@ -15,6 +15,7 @@ export async function Frame<S>({
 }) {
     let redirects: Record<number, string> = {};
     let buttonIndex = 1;
+
     const hydratedChildren = React.Children.map(children, (child) => {
         if (
             React.isValidElement<React.ComponentProps<typeof FrameButton>>(
@@ -54,14 +55,11 @@ export async function Frame<S>({
             <meta name="fc:frame" content="vNext" />
             <meta
                 name="fc:frame:post_url"
-                content={
-                    frame.url +
-                    "?state=" +
-                    encodeURIComponent(JSON.stringify(frame.state)) +
-                    `&redirects=${encodeURIComponent(
-                        JSON.stringify(redirects)
-                    )}`
-                }
+                content={`${process.env.BASE_URL}/frames?url=${
+                    frame.url
+                }&state=${encodeURIComponent(
+                    JSON.stringify(frame.state)
+                )}&redirects=${encodeURIComponent(JSON.stringify(redirects))}`}
             />
             {hydratedChildren}
         </>

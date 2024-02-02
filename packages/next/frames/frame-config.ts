@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import verifyFrameAction from "./lib/verify-message";
 import { FrameAction } from "./types";
 
@@ -16,6 +16,8 @@ export class FrameConfig<S> {
         const action = searchParams.action
             ? JSON.parse(decodeURIComponent(searchParams.action))
             : undefined;
+        const headersList = headers();
+        this.url = headersList.get("x-url") || "";
 
         this.state = { ...initialState, ...currentState };
         this.redirects = {};
@@ -32,6 +34,5 @@ export class FrameConfig<S> {
         } else {
             this.initialized = true;
         }
-        this.url = decodeURIComponent(searchParams.url);
     }
 }
