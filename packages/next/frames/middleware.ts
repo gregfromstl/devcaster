@@ -5,7 +5,10 @@ export async function framesMiddleware(request: NextRequest) {
     const method = request.method;
     const newUrl = new URL(request.url);
 
-    if (method === "POST") {
+    if (
+        method === "POST" &&
+        !parseInt(newUrl.searchParams.get("request_complete") ?? "0")
+    ) {
         const body = await request.json();
         const redirects = newUrl.searchParams.get("redirects");
         if (redirects) {
@@ -17,7 +20,6 @@ export async function framesMiddleware(request: NextRequest) {
                 );
             }
         }
-
         newUrl.searchParams.set(
             "action",
             encodeURIComponent(JSON.stringify(body))

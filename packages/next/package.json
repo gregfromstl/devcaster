@@ -11,10 +11,7 @@
         "farcaster"
     ],
     "author": "gregfromstl",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gregfromstl/devcaster"
-    },
+    "repository": "git+https://github.com/gregfromstl/devcaster",
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^20.11.16",

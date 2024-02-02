@@ -9,19 +9,7 @@ export class FrameConfig<S> {
     redirects: Record<number, string>;
     initialized = false;
 
-    constructor(
-        initialState: S,
-        searchParams: {
-            state?: string;
-            action?: string;
-            externalRedirect?: string;
-            url: string;
-        }
-    ) {
-        if (searchParams.externalRedirect) {
-            redirect(searchParams.externalRedirect);
-        }
-
+    constructor(initialState: S, searchParams: Record<string, string>) {
         const currentState = searchParams.state
             ? JSON.parse(decodeURIComponent(searchParams.state))
             : {};
