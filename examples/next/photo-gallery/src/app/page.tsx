@@ -4,6 +4,7 @@ import {
     FrameConfig,
     FrameImage,
 } from "@devcaster/next/frames";
+import Image from "next/image";
 
 export default function Home({
     searchParams,
@@ -31,7 +32,7 @@ export default function Home({
                     ◀️
                 </FrameButton>
                 <FrameButton
-                    href={`${process.env.BASE_URL}?index=${frame.state.index}&fid=${frame.action?.trustedData.message.data.fid}`}
+                    href={`${process.env.BASE_URL}?index=${frame.state.index}`}
                 >
                     Visit
                 </FrameButton>
@@ -44,9 +45,21 @@ export default function Home({
                 </FrameButton>
                 <FrameImage src={photos[frame.state.index]} />
             </Frame>
-            <main className="flex min-h-screen flex-col items-center justify-between p-24">
-                {/* Your site content goes here */}
-            </main>
+
+            <div className="w-screen h-screen relative bg-gray-100">
+                <Image
+                    src={
+                        photos[
+                            parseInt(
+                                searchParams.index || `${frame.state.index}`
+                            )
+                        ]
+                    }
+                    alt="Photo"
+                    fill
+                    className="object-cover object-center"
+                />
+            </div>
         </>
     );
 }
