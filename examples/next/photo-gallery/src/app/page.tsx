@@ -36,7 +36,7 @@ export default function Home({
                 <FrameButton
                     href={`${process.env.BASE_URL}?index=${
                         frame.state.index % photos.length
-                    }`}
+                    }&a=https://devcaster-photo-gallery.vercel.app`}
                 >
                     Visit
                 </FrameButton>
