@@ -3,6 +3,7 @@ import {
     FrameButton,
     FrameConfig,
     FrameImage,
+    FrameInput,
 } from "@devcaster/next/frames";
 import Image from "next/image";
 
@@ -42,11 +43,14 @@ export default function Home({
                 </FrameButton>
                 <FrameButton
                     onClick={(f: typeof frame) => {
+                        if (f.action?.trustedData.valid)
+                            console.log(f.action?.untrustedData.inputText);
                         f.state.index += 1;
                     }}
                 >
                     ▶️
                 </FrameButton>
+                <FrameInput placeholder="Type something!" />
                 <FrameImage src={photos[frame.state.index % photos.length]} />
             </Frame>
 
