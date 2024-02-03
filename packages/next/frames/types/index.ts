@@ -9,6 +9,7 @@ export type TrustedData = {
             frameActionBody: {
                 url: string;
                 buttonIndex: number;
+                inputText: string;
                 castId: {
                     fid: number;
                     hash: string;
@@ -30,6 +31,7 @@ export type UntrustedData = {
     timestamp: number;
     network: number;
     buttonIndex: number;
+    inputText: string;
     castId: {
         fid: number;
         hash: string;

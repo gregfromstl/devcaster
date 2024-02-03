@@ -1,5 +1,6 @@
 # @devcaster/next
-[![npm version](https://badge.fury.io/js/@devcaster%2Fnext.svg)](https://badge.fury.io/js/@devcaster%2Fnext)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/@devcaster%2Fnext.svg)](https://badge.fury.io/js/@devcaster%2Fnext)
 
 Devcaster allows anyone to declaratively create frames inside their existing Next.js sites, with just a few lines of code.
 
