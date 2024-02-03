@@ -120,6 +120,16 @@ You can also create a redirect button by providing an `href` prop rather than `o
 
 > Note: The redirect URL must have the same base domain as your site, per the Frame standard.
 
+## Text Input
+
+Use the `FrameInput` component to accept user input:
+
+```JSX
+<FrameInput placeholder="Type something!" />
+```
+
+Retrieve input from the `frame.action` in any of the button `onClick` callbacks.
+
 See more [examples](https://github.com/gregfromstl/devcaster/tree/main/examples/next)
 
 Contact [@gregfromstl](https://warpcast.com/gregfromstl) for any support.
