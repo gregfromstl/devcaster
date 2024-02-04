@@ -62,18 +62,14 @@ To create the frame elements, add a `Frame` component to your JSX, passing in yo
 
 ```JSX
 <Frame frame={frame}>
-	<FrameButton
-		onClick={(f: typeof frame) => {
-			f.state.count -= 1;
-		}}
-	>
+	<FrameButton onClick={(f: typeof frame) => {
+		f.state.count -= 1;
+	}}>
 		-
 	</FrameButton>
-	<FrameButton
-		onClick={(f: typeof frame) => {
-			f.state.count += 1;
-		}}
-	>
+	<FrameButton onClick={(f: typeof frame) => {
+		f.state.count += 1;
+	}}>
 		+
 	</FrameButton>
 	<FrameImage src={`${process.env.BASE_URL}/image?count=${frame.state.count}`} />
