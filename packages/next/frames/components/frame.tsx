@@ -1,10 +1,11 @@
 import React from "react";
-import { FrameConfig } from "..";
+import { FrameConfig, FrameLink } from "..";
 import {
     FrameButton,
     HydratedFrameButton,
     HydratedFrameRedirectButton,
 } from "./frame-button";
+import { HydratedFrameLink } from "./frame-link";
 
 export async function Frame<S>({
     frame,
@@ -29,12 +30,12 @@ export async function Frame<S>({
                 );
 
             if (child.props.href) {
-                redirects[buttonIndex] = child.props.href;
+                redirects[buttonIndex] =
+                    child.props.href + `?state=${JSON.stringify(frame.state)}`; // will be encoded later with all the redirects
                 return (
                     <HydratedFrameRedirectButton
                         {...child.props}
                         index={buttonIndex++}
-                        frame={frame}
                     />
                 );
             } else {
@@ -46,6 +47,20 @@ export async function Frame<S>({
                     />
                 );
             }
+        }
+        if (
+            React.isValidElement<React.ComponentProps<typeof FrameLink>>(
+                child
+            ) &&
+            child.type === FrameLink
+        ) {
+            return (
+                <HydratedFrameLink
+                    {...child.props}
+                    index={buttonIndex++}
+                    frame={frame}
+                />
+            );
         }
         return child;
     });

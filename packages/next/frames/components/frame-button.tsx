@@ -78,12 +78,10 @@ export async function HydratedFrameButton<S>({
 }
 
 export function HydratedFrameRedirectButton<S>({
-    frame,
     index,
     children,
 }: {
     children: string | number;
-    frame: FrameConfig<S>;
     index: number;
 }) {
     return (
