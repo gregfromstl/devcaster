@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@devcaster/next": "^0.0.3",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "satori": "^0.10.13",
     "sharp": "0.32.6"
   },
   "devDependencies": {

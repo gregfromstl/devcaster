@@ -9,8 +9,7 @@ export default async function verifyFrameAction(
             .map((byte: string) => parseInt(byte, 16))
     );
     const trustedDataResult = await fetch(
-        process.env.HUB_URL ??
-            "https://nemes.farcaster.xyz:2281/v1/validateMessage",
+        `${process.env.HUB_URL}/v1/validateMessage`,
         {
             method: "POST",
             headers: {
